@@ -145,16 +145,21 @@ cd real-time-comments
 
  # API Testing Images
 
-1. **GET Comment**
-   ![GET Comment](https://github.com/your-username/your-repo/blob/main/Real-Time-Comments-System-server/API%20TESTING%20IMAGE/GET-COMMENT.png)
+1. **Registration**
+   ![Registration](https://github.com/sandip1046/Real-Time-Comments-System-server/blob/main/API%20TESTING%20IMAGE/REGISTRATION.png)
 
 2. **Login**
-   ![Login](https://github.com/your-username/your-repo/blob/main/Real-Time-Comments-System-server/API%20TESTING%20IMAGE/LOGIN.png)
+   ![Login](https://github.com/sandip1046/Real-Time-Comments-System-server/blob/main/API%20TESTING%20IMAGE/LOGIN.png)
 
 3. **Post Comment**
-   ![Post Comment](https://github.com/your-username/your-repo/blob/main/Real-Time-Comments-System-server/API%20TESTING%20IMAGE/POST-COMMENT.png)
+   ![Post Comment](https://github.com/sandip1046/Real-Time-Comments-System-server/blob/main/API%20TESTING%20IMAGE/POST-COMMENT.png)
 
-4. **Registration**
-   ![Registration](https://github.com/your-username/your-repo/blob/main/Real-Time-Comments-System-server/API%20TESTING%20IMAGE/REGISTRATION.png)
+4. **GET Comment**
+   ![GET Comment](https://github.com/sandip1046/Real-Time-Comments-System-server/blob/main/API%20TESTING%20IMAGE/GET-COMMENT.png)
+
+
+
+
+
 
 
