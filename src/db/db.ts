@@ -7,10 +7,10 @@ class Database {
 
     private constructor() {
         this.pool = mysql.createPool({
-            host: 'localhost',
-            user: 'root',
-            database: 'Detrator',
-            password: process.env.password,
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            database: process.env.DB_NAME,
+            password: process.env.DB_PASSWORD,
             waitForConnections: true,
             connectionLimit: 10,
             queueLimit: 0,
