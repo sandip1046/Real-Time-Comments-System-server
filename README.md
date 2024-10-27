@@ -143,6 +143,18 @@ cd real-time-comments
                 }
                 export default Database.getInstance();// Export the singleton instance
 
-  #Screenshot of the Api testing:
-        ![Screenshot of Real-Time Comments System]( Backend/API TESTING IMAGE/GET-COMMENT.png )
+ # API Testing Images
+
+1. **GET Comment**
+   ![GET Comment](https://github.com/your-username/your-repo/blob/main/Real-Time-Comments-System-server/API%20TESTING%20IMAGE/GET-COMMENT.png)
+
+2. **Login**
+   ![Login](https://github.com/your-username/your-repo/blob/main/Real-Time-Comments-System-server/API%20TESTING%20IMAGE/LOGIN.png)
+
+3. **Post Comment**
+   ![Post Comment](https://github.com/your-username/your-repo/blob/main/Real-Time-Comments-System-server/API%20TESTING%20IMAGE/POST-COMMENT.png)
+
+4. **Registration**
+   ![Registration](https://github.com/your-username/your-repo/blob/main/Real-Time-Comments-System-server/API%20TESTING%20IMAGE/REGISTRATION.png)
+
 
