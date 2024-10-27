@@ -64,11 +64,11 @@ cd real-time-comments
   The backend will run on http://localhost:8000 by default.
 
 
-  ### Database Setup
+ ### Database Setup
   
   1. Install MySQL: Ensure you have MySQL installed and running on your machine.
      
-  2. Create a MySQL Database:
+   2. Create a MySQL Database:
        - Log in to MySQL
        - Create the database and tables:
          
@@ -88,60 +88,59 @@ cd real-time-comments
                     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
                   );
               
-  3. Update your .env file in the backend directory with the correct database credentials.
-  4. Test the Connection: Start the backend server to verify that MySQL is connected without any errors.
+   3. Update your .env file in the backend directory with the correct database credentials.
+   4. Test the Connection: Start the backend server to verify that MySQL is connected without any errors.
   
-  By default, the frontend will run on http://localhost:3000.
+        -- By default, the frontend will run on http://localhost:3000.
   
 
-
-##Assumptions
-
-- This setup assumes you have MySQL installed and accessible on your local machine.
-- The .env file must be configured with valid MySQL credentials and a JWT secret.
-- if the database connection is not wroking  then
-     1. Create a database and table locally using the query present in the file  path: *Backend\src\db\db.schema.sql*
-     2. Replace the code of *Backend\src\db\db.ts* with this code:
-       
-                 require("dotenv").config();
-                 import mysql, { Pool, PoolConnection } from 'mysql2/promise';
-                class Database {
-                    private static instance: Database;
-                    private pool: Pool;
-                    private constructor() {
-                        this.pool = mysql.createPool({
-                              host: process.env.DB_HOST,
-                              user: process.env.DB_USER,
-                              database: process.env.DB_NAME,
-                              password: process.env.DB_PASSWORD,
-                              waitForConnections: true,
-                              connectionLimit: 10,
-                              queueLimit: 0,0,
-                            queueLimit: 0,
-                        });
-                    }
-                    // Get the singleton instance
-                    public static getInstance(): Database {
-                        if (!Database.instance) {
-                            Database.instance = new Database();
-                        }
-                        return Database.instance;
-                    }
-                    // Get a connection from the pool
-                    public async getConnection(): Promise<PoolConnection> {
-                        try {
-                            return await this.pool.getConnection();
-                        } catch (error) {
-                            console.error('Error getting connection from the pool:', error);
-                            throw error;
-                        }
-                    }
-                    // Close all connections
-                    public async closePool(): Promise<void> {
-                        await this.pool.end();
-                    }
-                }
-                export default Database.getInstance();// Export the singleton instance
+# Assumptions
+  
+  1. This setup assumes you have MySQL installed and accessible on your local machine.
+  2. The .env file must be configured with valid MySQL credentials and a JWT secret.
+  3. if the database connection is not wroking  then
+       1. Create a database and table locally using the query present in the file  path: *Backend\src\db\db.schema.sql*
+       2. Replace the code of *Backend\src\db\db.ts* with this code:
+         
+                   require("dotenv").config();
+                   import mysql, { Pool, PoolConnection } from 'mysql2/promise';
+                  class Database {
+                      private static instance: Database;
+                      private pool: Pool;
+                      private constructor() {
+                          this.pool = mysql.createPool({
+                                host: process.env.DB_HOST,
+                                user: process.env.DB_USER,
+                                database: process.env.DB_NAME,
+                                password: process.env.DB_PASSWORD,
+                                waitForConnections: true,
+                                connectionLimit: 10,
+                                queueLimit: 0,0,
+                              queueLimit: 0,
+                          });
+                      }
+                      // Get the singleton instance
+                      public static getInstance(): Database {
+                          if (!Database.instance) {
+                              Database.instance = new Database();
+                          }
+                          return Database.instance;
+                      }
+                      // Get a connection from the pool
+                      public async getConnection(): Promise<PoolConnection> {
+                          try {
+                              return await this.pool.getConnection();
+                          } catch (error) {
+                              console.error('Error getting connection from the pool:', error);
+                              throw error;
+                          }
+                      }
+                      // Close all connections
+                      public async closePool(): Promise<void> {
+                          await this.pool.end();
+                      }
+                  }
+                  export default Database.getInstance();// Export the singleton instance
 
  # API Testing Images
 
