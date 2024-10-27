@@ -142,4 +142,7 @@ cd real-time-comments
                     }
                 }
                 export default Database.getInstance();// Export the singleton instance
-    
+
+  #Screenshot of the Api testing:
+        ![Screenshot of Real-Time Comments System](backend/src/images/screenshot.jpg)
+
