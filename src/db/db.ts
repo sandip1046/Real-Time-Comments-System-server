@@ -1,7 +1,6 @@
 require("dotenv").config();
 import mysql, { Pool, PoolConnection } from 'mysql2/promise';
 
-
 class Database {
     private static instance: Database;
     private pool: Pool;
@@ -10,12 +9,13 @@ class Database {
         this.pool = mysql.createPool({
             host: 'localhost',
             user: 'root',
-            database: 'detrator',
-            password:process.env.password,
+            database: 'Detrator',
+            password: process.env.password,
             waitForConnections: true,
             connectionLimit: 10,
             queueLimit: 0,
         });
+        this.setupDatabase(); // Automatically call setup on instantiation
     }
 
     // Get the singleton instance
@@ -24,6 +24,45 @@ class Database {
             Database.instance = new Database();
         }
         return Database.instance;
+    }
+
+    // Method to set up database and tables
+    private async setupDatabase(): Promise<void> {
+        let conn;
+        try {
+            conn = await this.pool.getConnection();
+
+           
+            await conn.query(`CREATE DATABASE IF NOT EXISTS Detrator`);  // Create database if it doesn't exist
+            await conn.query(`USE Detrator`);
+
+            // Create user table if it doesn't exist
+            await conn.query(`
+                CREATE TABLE IF NOT EXISTS user (
+                    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                    userName VARCHAR(255) NOT NULL
+                )
+            `);
+
+            // Create comments table if it doesn't exist
+            await conn.query(`
+                CREATE TABLE IF NOT EXISTS comments (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    username VARCHAR(255),
+                    comment TEXT,
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            `);
+
+            console.log("Database and tables set up successfully.");
+        } catch (error) {
+            console.error('Error setting up database and tables:', error);
+            throw error;
+        } finally {
+            if (conn) {
+                conn.release();
+            }
+        }
     }
 
     // Get a connection from the pool
@@ -42,5 +81,4 @@ class Database {
     }
 }
 
-
-export default Database.getInstance();// Export the singleton instance
+export default Database.getInstance();
