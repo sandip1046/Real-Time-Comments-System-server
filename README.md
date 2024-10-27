@@ -73,8 +73,8 @@ cd real-time-comments
        - Create the database and tables:
          
            
-                  CREATE DATABASE IF NOT EXISTS comments_database;
-                  USE comments_database;
+                  CREATE DATABASE IF NOT EXISTS Detrator;
+                  USE Detrator;
                   CREATE TABLE IF NOT EXISTS users (
                     id INT AUTO_INCREMENT PRIMARY KEY,
                     username VARCHAR(255) NOT NULL,
